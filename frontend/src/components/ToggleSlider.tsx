@@ -4,16 +4,20 @@ export default function ToggleSlider() {
     const [toggled, setToggle] = useState(false)
 
     function toggle() {
+        document.body.classList.remove(toggled ? "darkTheme" : "lightTheme")
+        document.body.classList.add(toggled ? "lightTheme" : "darkTheme")
+
         setToggle(!toggled)
     }
 
     return(
-        <div className="flex justify-center">
-            <div className={`relative w-14 h-7 rounded-full outline-2 outline transition-color duration-300 ease-in-out ${(toggled ? "bg-blue-500" : "outline-slate-600")}`}>
-                <button onClick={toggle} className={`w-full h-full rounded-xl transition-color duration-300 ease-in-out ${(toggled ? "bg-blue-400" : "bg-slate-500")}`}>
-                    <div className={`absolute bottom-1/2 translate-y-1/2 left-0.5 bg-white rounded-full w-6 h-6 outline-slate-600 outline-4 transition-transform duration-300 ease-in-out ${(toggled ? "translate-x-7" : "")}`}></div>
+        <div className="flex flex-col basis-20 justify-center flex-none gap-1">
+            <div className="flex align-center justify-center">
+                <button onClick={toggle} className={`relative w-14 h-7 rounded-full outline outline-1 ${(toggled ? "bg-button outline-button-hover" : "bg-card outline-slate-300")}`}>
+                    <div className={`absolute bottom-1/2 translate-y-1/2 left-0.5 bg-white rounded-full w-6 h-6 outline-slate-600 outline-4 ${(toggled ? "translate-x-7" : "")}`}></div>
                 </button>
             </div>
+            <span className='text-center text-txt text-sm font-light'>{toggled ? "Dark Mode" : "Light Mode"}</span>
         </div>
     )
 }
