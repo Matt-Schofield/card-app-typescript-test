@@ -3,7 +3,9 @@ export interface Entry {
   title: string;
   description: string;
   created_at: Date | string;
+  time: Date | string;
 }
+
 export type EntryContextType = {
   entries: Entry[];
   saveEntry: (entry: Entry) => void;
