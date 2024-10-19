@@ -40,7 +40,6 @@ describe("The server...", () => {
       url: "/get/90000",
     });
     expect(response_get.statusCode).toBe(200);
-    await console.log(response_get.payload);
     expect(JSON.parse(response_get.payload, dateReviver)).toEqual(testEntry);
   });
 
